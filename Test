@@ -1,0 +1,23 @@
+local player = game.Players.LocalPlayer
+local character = player.Character
+local humanoid = character:WaitForChild("Humanoid")
+
+local speed = 16
+
+function fly(key)
+    if key == "w" then
+        humanoid:MoveTo(character.HumanoidRootPart.CFrame + Vector3.new(0, speed, 0))
+    elseif key == "a" then
+        humanoid:MoveTo(character.HumanoidRootPart.CFrame + Vector3.new(-speed, 0, 0))
+    elseif key == "s" then
+        humanoid:MoveTo(character.HumanoidRootPart.CFrame + Vector3.new(0, -speed, 0))
+    elseif key == "d" then
+        humanoid:MoveTo(character.HumanoidRootPart.CFrame + Vector3.new(speed, 0, 0))
+    end
+end
+
+game.Players.LocalPlayer.KeyDown:Connect(function(key)
+    if key == "w" or key == "a" or key == "s" or key == "d" then
+        fly(key)
+    end
+end)
